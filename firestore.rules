@@ -1,0 +1,13 @@
+rules_version='2';
+service cloud.firestore{match /databases/{db}/documents{
+ function ok(){return request.auth!=null}
+ function adm(){return ok()&&exists(/databases/$(db)/documents/admins/$(request.auth.uid))}
+ match /admins/{u}{allow get:if ok()&&request.auth.uid==u}
+ match /users/{u}{allow read:if ok()&&(request.auth.uid==u||adm());
+  allow create:if ok()&&request.auth.uid==u;
+  allow update:if ok()&&request.auth.uid==u&&request.resource.data.diff(resource.data).affectedKeys().hasOnly(['read'])}
+ match /nims/{n}{allow get:if ok();allow create:if ok()&&request.resource.data.uid==request.auth.uid}
+ match /materials/{d}{allow read:if ok();allow write:if adm()}
+ match /questions/{d}{allow read:if ok();allow write:if adm()}
+ match /attempts/{d}{allow read:if ok()&&(adm()||resource.data.userId==request.auth.uid);
+  allow create:if ok()&&request.resource.data.userId==request.auth.uid&&request.resource.data.kind in ['pre','post']&&d==request.auth.uid+'_'+request.resource.data.kind&&(request.resource.data.kind=='pre'||exists(/databases/$(db)/documents/attempts/$(request.auth.uid+'_pre')))}}}
