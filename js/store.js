@@ -7,11 +7,11 @@ async init(){if(live)return new Promise(r=>{const un=au.onAuthStateChanged(u=>{u
  return S.me=J().users[localStorage.getItem('gl_me')]||null},
 async load(u){const[p,a]=await Promise.all([fs.collection('users').doc(u.uid).get(),fs.collection('admins').doc(u.uid).get()]);return S.me={read:[],...p.data(),id:u.uid,email:u.email,admin:a.exists}},
 async login(e,p){if(live){const c=await au.signInWithEmailAndPassword(e,p);return S.load(c.user)}
- const u=Object.values(J().users).find(x=>x.email===e&&x.pw===p);if(!u)throw Error('Email atau password salah');localStorage.setItem('gl_me',u.id);return S.me=u},
+ const u=Object.values(J().users).find(x=>x.email===e&&x.pw===p);if(!u)throw Error('Incorrect email or password.');localStorage.setItem('gl_me',u.id);return S.me=u},
 async register(p,pw){if(live){const c=await au.createUserWithEmailAndPassword(p.email,pw),ref=fs.collection('nims').doc(p.nim);
-  try{await fs.runTransaction(async t=>{if((await t.get(ref)).exists)throw Error('NIM sudah terdaftar');t.set(ref,{uid:c.user.uid});t.set(fs.collection('users').doc(c.user.uid),{...p,read:[],at:now()})})}catch(x){await c.user.delete();throw x}
+  try{await fs.runTransaction(async t=>{if((await t.get(ref)).exists)throw Error('This student ID is already registered.');t.set(ref,{uid:c.user.uid});t.set(fs.collection('users').doc(c.user.uid),{...p,read:[],at:now()})})}catch(x){await c.user.delete();throw x}
   return S.load(c.user)}
- const d=J();if(Object.values(d.users).some(x=>x.email===p.email||x.nim===p.nim))throw Error('Email atau NIM sudah terdaftar');
+ const d=J();if(Object.values(d.users).some(x=>x.email===p.email||x.nim===p.nim))throw Error('This email or student ID is already registered.');
  const id='u'+Date.now();d.users[id]={...p,pw,id,read:[]};W(d);localStorage.setItem('gl_me',id);return S.me=d.users[id]},
 async logout(){live?await au.signOut():localStorage.removeItem('gl_me');S.me=null},
 async list(col,own){if(live){let q=fs.collection(col);if(own)q=q.where('userId','==',S.me.id);return(await q.get()).docs.map(d=>({id:d.id,...d.data()}))}

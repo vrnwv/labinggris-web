@@ -54,19 +54,19 @@ const load = async () => {
   return C;
 };
 const gate = (m) =>
-  `<section class="gate-card"><span class="gate-mark">!</span><h1>Belum bisa dibuka</h1><p>${E(m)}</p><a class="back-link" href="#/">Kembali ke beranda</a></section>`;
+  `<section class="gate-card"><span class="gate-mark">!</span><h1>Not available yet</h1><p>${E(m)}</p><a class="back-link" href="#/">Back to dashboard</a></section>`;
 const mine = () =>
   Object.fromEntries(
     C.at.filter((a) => a.userId === Store.me.id).map((a) => [a.kind, a]),
   );
 function auth() {
-  return `<section class="auth-layout"><div class="auth-intro"><p class="eyebrow">Grammar Lab · ruang belajar</p><div class="tiles"><span>She</span><span class="on">goes</span><span>to</span><span>campus</span><span>every</span><span>day.</span></div><h1>Grammar makin paham, progres makin terlihat.</h1>
-<p>Belajar lewat materi singkat, kerjakan tes, lalu lihat perubahan skormu.</p><div class="auth-highlights"><span><b>01</b> Pre-test</span><span><b>02</b> Materi belajar</span><span><b>03</b> Post-test</span></div></div>
-<section class="auth-panel"><div class="auth-panel-title"><span class="brand-mark">GL</span><div><h2>Mulai belajar</h2><p>Masuk ke akunmu atau buat akun baru.</p></div></div>
-<div class="seg"><button type="button" class="on" data-a="tab" data-t="login">Masuk</button><button type="button" data-a="tab" data-t="reg">Daftar</button></div><section class="forms">
-<form data-f="login"><label>Email<input name="email" type="email" placeholder="nama@email.com" autocomplete="email" required></label><label>Password<input name="pw" type="password" placeholder="Password" autocomplete="current-password" required></label><button>Masuk</button><p class="err"></p>${Store.live ? "" : '<p class="hint">Mode demo. Admin: admin@demo.id / admin123</p>'}</form>
-<form data-f="reg" class="hide"><label>Nama lengkap<input name="fullName" placeholder="Nama sesuai identitas" autocomplete="name" required></label><label>Program studi<input name="prodi" placeholder="Program studi" required></label><label>NIM<input name="nim" placeholder="Nomor induk mahasiswa" required></label>
-<label>Email<input name="email" type="email" placeholder="nama@email.com" autocomplete="email" required></label><label>Password<input name="pw" type="password" minlength="6" placeholder="Minimal 6 karakter" autocomplete="new-password" required></label><button>Buat akun</button><p class="err"></p></form></section></section></section>`;
+  return `<section class="auth-layout"><div class="auth-intro"><p class="eyebrow">Grammar Lab · learning space</p><div class="tiles"><span>She</span><span class="on">goes</span><span>to</span><span>campus</span><span>every</span><span>day.</span></div><h1>Understand grammar better. See your progress.</h1>
+<p>Learn with bite-sized lessons, take the tests, and track your score improvement.</p><div class="auth-highlights"><span><b>01</b> Pre-test</span><span><b>02</b> Lessons</span><span><b>03</b> Post-test</span></div></div>
+<section class="auth-panel"><div class="auth-panel-title"><span class="brand-mark">GL</span><div><h2>Start learning</h2><p>Sign in or create a new account.</p></div></div>
+<div class="seg"><button type="button" class="on" data-a="tab" data-t="login">Sign in</button><button type="button" data-a="tab" data-t="reg">Register</button></div><section class="forms">
+<form data-f="login"><label>Email<input name="email" type="email" placeholder="name@email.com" autocomplete="email" required></label><label>Password<input name="pw" type="password" placeholder="Password" autocomplete="current-password" required></label><button>Sign in</button><p class="err"></p>${Store.live ? "" : '<p class="hint">Demo mode. Admin: admin@demo.id / admin123</p>'}</form>
+<form data-f="reg" class="hide"><label>Full name<input name="fullName" placeholder="Your full name" autocomplete="name" required></label><label>Study program<input name="prodi" placeholder="Study program" required></label><label>Student ID<input name="nim" placeholder="Enter your student ID" required></label>
+<label>Email<input name="email" type="email" placeholder="name@email.com" autocomplete="email" required></label><label>Password<input name="pw" type="password" minlength="6" placeholder="At least 6 characters" autocomplete="new-password" required></label><button>Create account</button><p class="err"></p></form></section></section></section>`;
 }
 async function dash() {
   await load();
@@ -80,16 +80,16 @@ async function dash() {
       "#/tes/pre",
       !!a.pre,
       !a.pre,
-      a.pre ? "Selesai. Tidak bisa diulang" : "Kerjakan dulu sebelum belajar",
+      a.pre ? "Completed. Cannot be retaken" : "Complete this before starting the lessons",
     ],
     [
-      "Belajar",
+      "Lessons",
       "#/belajar",
       all,
       !!a.pre,
       a.post
-        ? "Bisa dibuka lagi kapan saja"
-        : `${n} dari ${C.ms.length} materi dibaca`,
+        ? "Available to revisit anytime"
+        : `${n} of ${C.ms.length} lessons completed`,
     ],
     [
       "Post-test",
@@ -97,31 +97,104 @@ async function dash() {
       !!a.post,
       !!a.pre && all && !a.post,
       a.post
-        ? "Selesai. Tidak bisa diulang"
-        : "Terbuka setelah semua materi dibaca",
+        ? "Completed. Cannot be retaken"
+        : "Unlocks after all lessons are completed",
     ],
-    ["Hasil", "#/hasil", false, !!a.post, "Lihat perubahan skormu"],
+    ["Results", "#/hasil", false, !!a.post, "See how your score changed"],
   ];
   const progress = C.ms.length ? Math.round((n / C.ms.length) * 100) : 0;
-  return `<section class="dashboard"><div class="welcome-block"><p class="eyebrow">BERANDA MAHASISWA</p><h1>Halo, ${E(Store.me.fullName)}</h1><p>Siap melanjutkan latihan grammar hari ini?</p></div>
-<section class="progress-card"><div class="progress-copy"><div><span class="eyebrow">PROGRES BELAJAR</span><h2>${n} dari ${C.ms.length} materi selesai</h2></div><b>${progress}%</b></div><div class="progress-track"><i style="width:${progress}%"></i></div><p>${progress === 100 ? "Semua materi sudah selesai. Post-test siap dikerjakan." : "Selesaikan semua materi untuk membuka post-test."}</p></section>
-<div class="section-title"><div><h2>Langkah belajarmu</h2><p>Ikuti urutan ini untuk menyelesaikan latihan.</p></div></div>
-<ol class="steps">${st.map((s, i) => {const status=s[2]?"done":s[3]?"open":"lock",content=`<span class="step-number">${s[2]?"✓":`0${i+1}`}</span><span class="step-copy"><small>LANGKAH 0${i+1}</small><b>${s[0]}</b><span>${s[4]}</span></span><span class="step-status">${s[2]?"Selesai":s[3]?"Mulai":"Terkunci"}</span>`;return `<li class="${status}">${s[3]?`<a href="${s[1]}">${content}</a>`:`<div class="step-disabled">${content}</div>`}</li>`;}).join("")}</ol></section>`;
+  const nextLesson = C.ms.find((lesson) => !rd.includes(lesson.id));
+  let nextAction = null;
+  if (!a.pre) {
+    nextAction = {
+      href: "#/tes/pre",
+      label: "START HERE",
+      title: "Take the pre-test",
+      action: "Start pre-test",
+    };
+  } else if (nextLesson) {
+    nextAction = {
+      href: `#/m/${E(nextLesson.id)}`,
+      label: "NEXT LESSON",
+      title: nextLesson.title,
+      action: "Continue learning",
+    };
+  } else if (all && !a.post) {
+    nextAction = {
+      href: "#/tes/post",
+      label: "ALL LESSONS COMPLETE",
+      title: "Ready for your post-test?",
+      action: "Take post-test",
+    };
+  } else if (a.post) {
+    nextAction = {
+      href: "#/hasil",
+      label: "LEARNING COMPLETE",
+      title: "See how your scores changed",
+      action: "View results",
+    };
+  }
+  const progressMessage = !a.pre
+    ? "Take the pre-test to start your learning path."
+    : all && a.post
+      ? "You have completed all lessons and tests."
+      : all
+        ? "All lessons completed. The post-test is ready."
+        : "Complete all lessons to unlock the post-test.";
+  const continueMarkup = nextAction
+    ? `<a class="dashboard-continue" href="${nextAction.href}"><span class="dashboard-continue-copy"><small>${nextAction.label}</small><b>${E(nextAction.title)}</b></span><span class="dashboard-continue-action">${nextAction.action}<span aria-hidden="true">→</span></span></a>`
+    : "";
+  return `<section class="dashboard"><div class="welcome-block"><p class="eyebrow">STUDENT DASHBOARD</p><h1>Hello, ${E(Store.me.fullName)}</h1><p>Ready to continue your grammar practice today?</p></div>
+<section class="progress-card"><div class="progress-copy"><div><span class="eyebrow">LEARNING PROGRESS</span><h2>${n} of ${C.ms.length} lessons completed</h2></div><b>${progress}%</b></div><div class="progress-track"><i style="width:${progress}%"></i></div><p>${progressMessage}</p>${continueMarkup}</section>
+<div class="section-title"><div><h2>Your learning path</h2><p>Follow these steps to complete your practice.</p></div></div>
+<ol class="steps">${st.map((s, i) => {const status=s[2]?"done":s[3]?"open":"lock",content=`<span class="step-number">${s[2]?"✓":`0${i+1}`}</span><span class="step-copy"><small>STEP 0${i+1}</small><b>${s[0]}</b><span>${s[4]}</span></span><span class="step-status">${s[2]?"Completed":s[3]?"Start":"Locked"}</span>`;return `<li class="${status}">${s[3]?`<a href="${s[1]}">${content}</a>`:`<div class="step-disabled">${content}</div>`}</li>`;}).join("")}</ol></section>`;
 }
 async function belajar() {
   await load();
-  if (!mine().pre) return gate("Kerjakan pre-test dulu sebelum belajar.");
+  if (!mine().pre) return gate("Complete the pre-test before starting the lessons.");
   const rd = Store.me.read || [];
-  return `<section class="page-section"><a class="back-link" href="#/">← Beranda</a><div class="page-heading"><p class="eyebrow">RUANG BELAJAR</p><h1>Materi grammar</h1><p>Tonton video, pelajari penjelasan, lalu kerjakan tiga soal latihan di tiap materi.</p></div><div class="material-list">${C.ms.map((m, i) => `<a class="material-card" href="#/m/${E(m.id)}"><span class="material-number">${String(i+1).padStart(2,"0")}</span><span class="material-copy"><b>${E(m.title)}</b><small>${rd.includes(m.id) ? "Materi sudah selesai" : `${m.youtube ? "Video" : "Materi"} · ${m.quiz ? m.quiz.length + " soal latihan" : "Baca materi"}`}</small></span><span class="material-status ${rd.includes(m.id) ? "complete" : ""}">${rd.includes(m.id) ? "Selesai ✓" : "Belum dibaca"}</span></a>`).join("") || '<p class="empty-state">Belum ada materi. Coba kembali lagi nanti.</p>'}</div></section>`;
+  return `<section class="page-section"><a class="back-link" href="#/">← Dashboard</a><div class="page-heading"><p class="eyebrow">LEARNING SPACE</p><h1>Grammar lessons</h1><p>Watch the video, read the explanation, then answer three practice questions in each lesson.</p></div><div class="material-list">${C.ms.map((m, i) => `<a class="material-card" href="#/m/${E(m.id)}"><span class="material-number">${String(i+1).padStart(2,"0")}</span><span class="material-copy"><b>${E(m.title)}</b><small>${rd.includes(m.id) ? "Lesson completed" : `${m.youtube ? "Video" : "Lesson"} · ${m.quiz ? m.quiz.length + " practice questions" : "Read lesson"}`}</small></span><span class="material-status ${rd.includes(m.id) ? "complete" : ""}">${rd.includes(m.id) ? "Completed ✓" : "Not started"}</span></a>`).join("") || '<p class="empty-state">No lessons available yet. Please check back later.</p>'}</div></section>`;
 }
 async function materi(id) {
   await load();
-  if (!mine().pre) return gate("Kerjakan pre-test dulu sebelum belajar.");
+  if (!mine().pre) return gate("Complete the pre-test before starting the lessons.");
   const m = C.ms.find((x) => x.id === id);
-  if (!m) return '<section class="gate-card"><h1>Materi tidak ditemukan</h1><a class="back-link" href="#/belajar">Kembali ke materi</a></section>';
+  if (!m) return '<section class="gate-card"><h1>Lesson not found</h1><a class="back-link" href="#/belajar">Back to lessons</a></section>';
   const videos = ytIds(m.youtube),
     quiz = shuf(m.quiz || []);
   const read = (Store.me.read || []).includes(m.id);
+  const lessonIndex = C.ms.findIndex((lesson) => lesson.id === m.id),
+    previousLesson = C.ms[lessonIndex - 1],
+    nextLesson = C.ms[lessonIndex + 1],
+    lessonNumber = lessonIndex + 1,
+    lessonProgress = Math.round((lessonNumber / C.ms.length) * 100),
+    allLessonsRead =
+      C.ms.length > 0 &&
+      C.ms.every((lesson) => (Store.me.read || []).includes(lesson.id)),
+    previousMarkup = previousLesson
+      ? `<a href="#/m/${E(previousLesson.id)}">← Previous lesson</a>`
+      : '<span class="lesson-nav-spacer" aria-hidden="true"></span>',
+    nextNavHref = nextLesson
+      ? `#/m/${E(nextLesson.id)}`
+      : allLessonsRead
+        ? "#/tes/post"
+        : "#/belajar",
+    nextNavLabel = nextLesson
+      ? "Next lesson →"
+      : allLessonsRead
+        ? "Go to post-test →"
+        : "All lessons →",
+    continueHref = nextLesson
+      ? `#/m/${E(nextLesson.id)}`
+      : allLessonsRead
+        ? "#/tes/post"
+        : "#/belajar",
+    continueLabel = nextLesson
+      ? "Continue to next lesson"
+      : allLessonsRead
+        ? "Continue to post-test"
+        : "Continue to lesson list";
+  const lessonNavigation = `<div class="lesson-progress"><div class="lesson-progress-label"><span>LESSON ${String(lessonNumber).padStart(2, "0")} OF ${String(C.ms.length).padStart(2, "0")}</span><b>${lessonProgress}%</b></div><div class="lesson-progress-track" role="progressbar" aria-label="Lesson progress" aria-valuemin="0" aria-valuemax="${C.ms.length}" aria-valuenow="${lessonNumber}"><span style="width:${lessonProgress}%"></span></div></div><nav class="lesson-navigation" aria-label="Lesson navigation">${previousMarkup}<a href="${nextNavHref}">${nextNavLabel}</a></nav>`;
   const body = String(m.body || "")
     .split("\n")
     .filter(Boolean)
@@ -132,10 +205,10 @@ async function materi(id) {
     )
     .join("");
   const videoMarkup = videos.length
-    ? `<section class="lesson-video"><h2>${E(m.videoTitle || "Video materi")}</h2><div class="vid-grid">${videos.map((video, i) => `<div class="vid"><iframe src="https://www.youtube.com/embed/${video}" title="${E(m.videoTitle || `Video ${i + 1} materi ${m.title}`)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>`).join("")}</div></section>`
+    ? `<section class="lesson-video"><h2>${E(m.videoTitle || "Lesson video")}</h2><div class="vid-grid">${videos.map((video, i) => `<div class="vid"><iframe src="https://www.youtube.com/embed/${video}" title="${E(m.videoTitle || `Video ${i + 1}: ${m.title}`)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>`).join("")}</div></section>`
     : "";
   const quizMarkup = quiz.length
-    ? `<section class="lesson-quiz"><div class="lesson-quiz-heading"><h2>Cek pemahaman</h2><p>${quiz.length} soal pilihan ganda dengan urutan dan opsi yang diacak.</p></div><form data-f="lessonQuiz" data-material="${E(m.id)}">${quiz
+    ? `<section class="lesson-quiz"><div class="lesson-quiz-heading"><h2>Check your understanding</h2><p>${quiz.length} multiple-choice questions with randomized question and answer order.</p></div><form data-f="lessonQuiz" data-material="${E(m.id)}">${quiz
         .map(
           (question, i) =>
             `<fieldset data-id="${E(question.id)}"><legend>${i + 1}. ${E(question.text)}</legend>${shuf(
@@ -145,18 +218,24 @@ async function materi(id) {
                 (option) =>
                   `<label class="opt"><input type="radio" name="q${i}" value="${E(option)}" required>${E(option)}</label>`,
               )
-              .join("")}</fieldset>`,
+              .join("")}<p class="lesson-question-feedback" role="status" aria-live="polite"></p></fieldset>`,
         )
-        .join("")}<button type="submit">Periksa jawaban</button><p class="lesson-quiz-result" role="status" aria-live="polite"></p></form></section>`
+        .join("")}<button type="submit">Check answers</button><p class="lesson-quiz-result" role="status" aria-live="polite"></p></form></section>`
     : "";
-  return `<section class="page-section"><a class="back-link" href="#/belajar">← Daftar materi</a><div class="page-heading"><p class="eyebrow">MATERI GRAMMAR</p><h1>${E(m.title)}</h1></div>${videoMarkup}<article class="lesson-card"><h2>Penjelasan</h2>${body}</article>${quizMarkup}<div class="lesson-actions"><button data-a="read" data-id="${E(m.id)}" ${read ? "disabled" : ""}>${read ? "Materi selesai ✓" : "Tandai selesai"}</button><a class="back-link" href="#/belajar">Kembali ke daftar materi</a></div></section>`;
+  const actions = read
+    ? `<div class="completion-actions"><a class="completion-secondary" href="#/">Back to dashboard</a><a class="completion-primary" href="${continueHref}">${continueLabel} →</a></div>`
+    : `<div class="lesson-actions"><button data-a="read" data-id="${E(m.id)}">Mark as complete</button><a class="back-link" href="#/belajar">Back to all lessons</a></div>`;
+  return `<section class="page-section"><a class="back-link" href="#/belajar">← All lessons</a><div class="page-heading"><p class="eyebrow">GRAMMAR LESSON</p><h1>${E(m.title)}</h1></div>${lessonNavigation}${videoMarkup}<article class="lesson-card"><h2>Explanation</h2>${body}</article>${quizMarkup}${actions}</section>`;
 }
 async function tes(kind) {
   await load();
   const a = mine();
-  if (!["pre", "post"].includes(kind)) return gate("Tes tidak ditemukan.");
-  if (a[kind])
-    return `<section class="gate-card"><span class="gate-mark">✓</span><h1>${kind === "pre" ? "Pre-test" : "Post-test"} selesai</h1><p>Tes hanya bisa dikerjakan satu kali. Terima kasih sudah mengerjakannya.</p><a class="back-link" href="#/">Kembali ke beranda</a></section>`;
+  if (!["pre", "post"].includes(kind)) return gate("Test not found.");
+  if (a[kind]) {
+    const nextHref = kind === "pre" ? "#/belajar" : "#/hasil",
+      nextLabel = kind === "pre" ? "Continue to lessons" : "Continue to results";
+    return `<section class="gate-card completion-card"><span class="gate-mark">✓</span><p class="eyebrow">${kind === "pre" ? "STEP 01 COMPLETE" : "STEP 03 COMPLETE"}</p><h1>${kind === "pre" ? "Pre-test" : "Post-test"} completed</h1><p>You can only take this test once. Thank you for completing it.</p><div class="completion-actions"><a class="completion-secondary" href="#/">Back to dashboard</a><a class="completion-primary" href="${nextHref}">${nextLabel} →</a></div></section>`;
+  }
   if (
     kind === "post" &&
     (!a.pre ||
@@ -164,7 +243,7 @@ async function tes(kind) {
       !C.ms.every((m) => (Store.me.read || []).includes(m.id)))
   )
     return gate(
-      "Post-test terbuka setelah pre-test dan semua materi ditandai selesai.",
+      "The post-test unlocks after you complete the pre-test and mark all lessons as complete.",
     );
   const available = C.qs.filter((q) => (q.use || []).includes(kind));
   const previousOrder =
@@ -172,8 +251,8 @@ async function tes(kind) {
       ? (a.pre.detail || []).map((item) => item.q)
       : [];
   const qs = shufQuestions(available, previousOrder);
-  if (!qs.length) return '<section class="gate-card"><h1>Soal belum tersedia</h1><p>Silakan kembali lagi nanti.</p><a class="back-link" href="#/">Kembali ke beranda</a></section>';
-  return `<section class="page-section test-page"><a class="back-link" href="#/">← Beranda</a><div class="page-heading"><p class="eyebrow">${kind === "pre" ? "LANGKAH 01" : "LANGKAH 03"}</p><h1>${kind === "pre" ? "Pre-test" : "Post-test"}</h1><p>Urutan soal diacak; post-test berbeda dari pre-test. Jumlah soal: ${qs.length}.</p></div><form class="test-form" data-f="test" data-kind="${kind}">${qs
+  if (!qs.length) return '<section class="gate-card"><h1>No questions available</h1><p>Please check back later.</p><a class="back-link" href="#/">Back to dashboard</a></section>';
+  return `<section class="page-section test-page"><a class="back-link" href="#/">← Dashboard</a><div class="page-heading"><p class="eyebrow">${kind === "pre" ? "STEP 01" : "STEP 03"}</p><h1>${kind === "pre" ? "Pre-test" : "Post-test"}</h1><p>Questions are randomized, and the post-test uses a different order. Number of questions: ${qs.length}.</p></div><form class="test-form" data-f="test" data-kind="${kind}">${qs
     .map(
       (q, i) =>
         `<fieldset data-id="${q.id}"><legend>${i + 1}. ${E(q.text)}</legend>` +
@@ -185,7 +264,7 @@ async function tes(kind) {
               )
               .join("")
           : q.type === "fill"
-            ? `<input name="q${i}" autocomplete="off" placeholder="Jawabanmu">`
+            ? `<input name="q${i}" autocomplete="off" placeholder="Your answer">`
             : `<div class="ord" data-i="${i}"><div class="ans"></div><div class="pool">${shuf(
                 q.answer.split(/\s+/),
               )
@@ -196,17 +275,17 @@ async function tes(kind) {
                 .join("")}</div></div>`) +
         `</fieldset>`,
     )
-    .join("")}<div class="test-submit"><p>Pastikan jawabanmu sudah benar sebelum dikirim.</p><button>Kirim jawaban</button></div><p class="err"></p></form></section>`;
+    .join("")}<div class="test-submit"><p>Review your answers before submitting.</p><button>Submit answers</button></div><p class="err"></p></form></section>`;
 }
 async function hasil() {
   await load();
   const a = mine();
   if (!a.pre || !a.post)
-    return '<section class="gate-card"><span class="gate-mark">↗</span><h1>Hasilmu segera tersedia</h1><p>Kerjakan pre-test dan post-test untuk melihat perbandingan skor.</p><a class="back-link" href="#/">Kembali ke beranda</a></section>';
+    return '<section class="gate-card"><span class="gate-mark">↗</span><h1>Your results will be available soon</h1><p>Complete both the pre-test and post-test to compare your scores.</p><a class="back-link" href="#/">Back to dashboard</a></section>';
   const p = (a.pre.score / a.pre.total) * 100,
     q = (a.post.score / a.post.total) * 100,
     d = Math.round(q - p);
-  return `<section class="page-section results-page"><a class="back-link" href="#/">← Beranda</a><div class="results-hero"><p class="eyebrow">HASIL LATIHAN</p><h1>Perkembanganmu</h1><div class="big"><b>${d > 0 ? "+" : ""}${d}</b><span>poin perubahan skor</span></div><p>${d > 0 ? "Bagus! Skormu meningkat setelah belajar." : d < 0 ? "Terus berlatih, kamu bisa meningkatkan hasil berikutnya." : "Skormu tetap stabil. Terus berlatih untuk berkembang."}</p></div><section class="score-comparison"><h2>Perbandingan skor</h2>${[
+  return `<section class="page-section results-page"><a class="back-link" href="#/">← Dashboard</a><div class="results-hero"><p class="eyebrow">PRACTICE RESULTS</p><h1>Your progress</h1><div class="big"><b>${d > 0 ? "+" : ""}${d}</b><span>score change in points</span></div><p>${d > 0 ? "Great work! Your score improved after studying." : d < 0 ? "Keep practicing. You can improve your next result." : "Your score stayed the same. Keep practicing to improve."}</p></div><section class="score-comparison"><h2>Score comparison</h2>${[
     ["Pre-test", a.pre, p],
     ["Post-test", a.post, q],
   ]
@@ -214,7 +293,7 @@ async function hasil() {
       (r) =>
         `<div class="bar"><div class="bar-label"><span>${r[0]}</span><b>${Math.round(r[2])}% <small>(${r[1].score}/${r[1].total})</small></b></div><div><i style="width:${r[2]}%"></i></div></div>`,
     )
-    .join("")}<p class="hint">Terima kasih sudah menyelesaikan latihan.</p></section></section>`;
+    .join("")}<p class="hint">Thank you for completing the practice.</p></section></section>`;
 }
 async function admin(tab) {
   await load();
@@ -239,6 +318,22 @@ async function admin(tab) {
       };
     });
     window._rows = rows;
+    const formatScore = (score) => (score === "" ? "—" : `${score}%`);
+    const studentCards = rows
+      .map((r, i) => {
+        const searchText = [r.NIM, r.Nama, r.Prodi, r.Email].join(" ");
+        const preTaken = r.Pre !== "",
+          postTaken = r.Post !== "",
+          difference =
+            r.Selisih === ""
+              ? "—"
+              : `${r.Selisih > 0 ? "+" : ""}${r.Selisih}`;
+        return `<article class="student-card" data-student-index="${i}" data-student-search="${E(searchText)}" data-pre="${preTaken}" data-post="${postTaken}">
+          <div class="student-card-header"><div><small>PROFIL MAHASISWA</small><h3>${E(r.Nama) || "Tanpa nama"}</h3><span>NIM ${E(r.NIM) || "—"}</span></div><div class="admin-row-actions"><button class="ghost" data-a="student-edit" data-id="${E(us[i].id)}">Edit</button><button class="ghost danger" data-a="student-delete" data-id="${E(us[i].id)}">Hapus</button></div></div>
+          <dl class="student-card-details"><div><dt>Program studi</dt><dd>${E(r.Prodi) || "—"}</dd></div><div class="student-card-email"><dt>Email</dt><dd>${E(r.Email) || "—"}</dd></div><div><dt>Pre-test</dt><dd><span class="score-pill ${preTaken ? "is-complete" : "is-pending"}">${formatScore(r.Pre)}</span></dd></div><div><dt>Post-test</dt><dd><span class="score-pill ${postTaken ? "is-complete" : "is-pending"}">${formatScore(r.Post)}</span></dd></div><div><dt>Selisih skor</dt><dd><span class="score-pill">${difference}</span></dd></div></dl>
+        </article>`;
+      })
+      .join("");
     b = `<section class="admin-toolbar"><div><h2>Mahasiswa</h2><p>Kelola akun, profil, dan pantau hasil tes.</p></div><div class="admin-toolbar-actions"><span class="admin-count"><b>${rows.length}</b> mahasiswa</span><button class="ghost" data-a="xlsx">Ekspor Excel</button></div></section>
   <section class="admin-panel"><div class="admin-section-head"><div><h2>Data mahasiswa</h2><p>Tambahkan akun baru atau pilih Edit pada tabel untuk memperbarui profil.</p></div></div>
   <form class="admin-form" data-f="student"><input type="hidden" name="id"><div class="admin-fields">
@@ -248,8 +343,11 @@ async function admin(tab) {
   <label>Email akun<input name="email" type="email" placeholder="nama@email.com" required></label>
   <label>Password akun<input name="password" type="password" minlength="6" placeholder="Minimal 6 karakter" required><small>Wajib diisi saat membuat akun mahasiswa.</small></label>
   </div><div class="admin-form-actions"><button>Simpan mahasiswa</button><button type="button" class="ghost hide" data-a="student-reset">Batal edit</button></div><p class="err"></p></form></section>
-  <section class="admin-panel"><div class="admin-section-head"><div><h2>Daftar mahasiswa</h2><p>Skor tes ditampilkan dalam persen. Tabel dapat digeser ke samping pada layar kecil.</p></div></div>
-  <div class="scroll"><table class="admin-table"><thead><tr>${["NIM", "Nama", "Program studi", "Email", "Pre-test", "Post-test", "Selisih", "Aksi"].map((h) => `<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.length ? rows.map((r, i) => `<tr><td class="admin-nim">${E(r.NIM)}</td><td class="admin-name">${E(r.Nama)}</td><td>${E(r.Prodi)}</td><td class="admin-email">${E(r.Email)}</td><td><span class="score-pill">${r.Pre === "" ? "—" : `${r.Pre}%`}</span></td><td><span class="score-pill">${r.Post === "" ? "—" : `${r.Post}%`}</span></td><td><span class="score-pill">${r.Selisih === "" ? "—" : `${r.Selisih > 0 ? "+" : ""}${r.Selisih}`}</span></td><td><div class="admin-row-actions"><button class="ghost" data-a="student-edit" data-id="${E(us[i].id)}">Edit</button><button class="ghost danger" data-a="student-delete" data-id="${E(us[i].id)}">Hapus</button></div></td></tr>`).join("") : '<tr><td colspan="8" class="admin-empty">Belum ada data mahasiswa.</td></tr>'}</tbody></table></div></section>`;
+  <section class="admin-panel"><div class="admin-section-head"><div><h2>Daftar mahasiswa</h2><p>Cari mahasiswa atau filter berdasarkan progres tes.</p></div></div>
+  <div class="admin-student-filters"><label class="admin-student-search">Cari mahasiswa<input type="search" data-student-search placeholder="Nama, NIM, prodi, atau email"></label><label>Status tes<select data-student-status><option value="all">Semua mahasiswa</option><option value="not-started">Belum mengerjakan tes</option><option value="pre-taken">Pre-test selesai</option><option value="both-complete">Pre-test & post-test selesai</option></select></label><span class="admin-filter-count" role="status">Menampilkan ${rows.length} dari ${rows.length} mahasiswa</span></div>
+  <p class="admin-filter-empty" role="status" hidden>Tidak ada mahasiswa yang cocok dengan pencarian ini.</p>
+  <div class="scroll"><table class="admin-table"><thead><tr>${["NIM", "Nama", "Program studi", "Email", "Pre-test", "Post-test", "Selisih", "Aksi"].map((h) => `<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.length ? rows.map((r, i) => `<tr data-student-index="${i}"><td class="admin-nim">${E(r.NIM)}</td><td class="admin-name">${E(r.Nama)}</td><td>${E(r.Prodi)}</td><td class="admin-email">${E(r.Email)}</td><td><span class="score-pill ${r.Pre !== "" ? "is-complete" : "is-pending"}">${formatScore(r.Pre)}</span></td><td><span class="score-pill ${r.Post !== "" ? "is-complete" : "is-pending"}">${formatScore(r.Post)}</span></td><td><span class="score-pill">${r.Selisih === "" ? "—" : `${r.Selisih > 0 ? "+" : ""}${r.Selisih}`}</span></td><td><div class="admin-row-actions"><button class="ghost" data-a="student-edit" data-id="${E(us[i].id)}">Edit</button><button class="ghost danger" data-a="student-delete" data-id="${E(us[i].id)}">Hapus</button></div></td></tr>`).join("") : '<tr><td colspan="8" class="admin-empty">Belum ada data mahasiswa.</td></tr>'}</tbody></table></div>
+  <div class="student-card-list">${studentCards}</div></section>`;
   } else if (tab === "materi")
     b = `<section class="admin-panel"><div class="admin-section-head"><div><h2>Tambah atau edit materi</h2><p>Susun materi sebagai bacaan singkat yang mudah diikuti.</p></div></div><form class="admin-form" data-f="mat"><input type="hidden" name="id"><div class="admin-fields">
   <label>Judul materi<input name="title" placeholder="Contoh: Simple Present Tense" required></label><label>Urutan<input name="order" type="number" placeholder="Contoh: 1" required></label>
@@ -269,8 +367,10 @@ async function view() {
     me = Store.me;
   A.className = me && me.admin ? "wide" : me ? "user-page" : "auth-page";
   $("#nav").innerHTML = me
-    ? (me.admin ? '<a href="#/">Admin</a>' : '<a href="#/">Beranda</a>') +
-      '<button class="ghost" data-a="out">Keluar</button>'
+    ? (me.admin
+        ? '<a class="nav-icon" href="#/" aria-label="Admin" title="Admin"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></svg></a>'
+        : '<a class="nav-icon" href="#/" aria-label="Dashboard" title="Dashboard"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></a>') +
+      '<button class="ghost nav-icon" type="button" data-a="out" aria-label="Sign out" title="Sign out"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>'
     : "";
   try {
     A.innerHTML = !me
@@ -290,6 +390,42 @@ async function view() {
     A.innerHTML = `<p class="err">${E(e.message)}</p>`;
   }
 }
+function filterStudentRecords() {
+  const search = document.querySelector("[data-student-search]"),
+    status = document.querySelector("[data-student-status]");
+  if (!search || !status) return;
+  const query = search.value.trim().toLowerCase(),
+    cards = [...document.querySelectorAll(".student-card")],
+    rows = [...document.querySelectorAll(".admin-table tbody tr[data-student-index]")];
+  let visible = 0;
+  cards.forEach((card, index) => {
+    const preTaken = card.dataset.pre === "true",
+      postTaken = card.dataset.post === "true";
+    let matchesStatus = true;
+    if (status.value === "not-started")
+      matchesStatus = !preTaken && !postTaken;
+    else if (status.value === "pre-taken") matchesStatus = preTaken;
+    else if (status.value === "both-complete")
+      matchesStatus = preTaken && postTaken;
+    const matches =
+      card.dataset.studentSearch.toLowerCase().includes(query) &&
+      matchesStatus;
+    card.classList.toggle("is-filtered", !matches);
+    if (rows[index]) rows[index].classList.toggle("is-filtered", !matches);
+    if (matches) visible++;
+  });
+  const count = document.querySelector(".admin-filter-count"),
+    empty = document.querySelector(".admin-filter-empty");
+  if (count)
+    count.textContent = `Menampilkan ${visible} dari ${cards.length} mahasiswa`;
+  if (empty) empty.hidden = cards.length === 0 || visible > 0;
+}
+document.addEventListener("input", (event) => {
+  if (event.target.matches("[data-student-search]")) filterStudentRecords();
+});
+document.addEventListener("change", (event) => {
+  if (event.target.matches("[data-student-status]")) filterStudentRecords();
+});
 document.addEventListener("submit", async (e) => {
   e.preventDefault();
   const f = e.target,
@@ -304,22 +440,35 @@ document.addEventListener("submit", async (e) => {
       await Store.register(p, pw);
     } else if (k === "lessonQuiz") {
       const lesson = C.ms.find((item) => item.id === f.dataset.material);
-      if (!lesson) throw Error("Materi kuis tidak ditemukan.");
+      if (!lesson) throw Error("Lesson quiz not found.");
       const answers = new FormData(f);
       let score = 0;
-      const feedback = [...f.querySelectorAll("fieldset")].map((field, i) => {
+      const fields = [...f.querySelectorAll("fieldset")];
+      fields.forEach((field, i) => {
         const question = (lesson.quiz || []).find(
           (item) => item.id === field.dataset.id,
         );
-        if (!question) throw Error("Soal latihan tidak ditemukan.");
+        if (!question) throw Error("Practice question not found.");
         const correct = norm(answers.get("q" + i) || "") === norm(question.answer);
         if (correct) score++;
-        return correct
-          ? `${i + 1}. Benar.`
-          : `${i + 1}. Belum tepat — jawaban: ${question.answer}.`;
+        field.querySelectorAll(".opt").forEach((option) => {
+          option.classList.remove("is-correct", "is-incorrect");
+        });
+        const message = field.querySelector(".lesson-question-feedback");
+        message.classList.remove("is-correct", "is-incorrect");
+        const selected = field.querySelector("input:checked");
+        if (selected) {
+          selected.closest(".opt").classList.add(
+            correct ? "is-correct" : "is-incorrect",
+          );
+        }
+        message.classList.add(correct ? "is-correct" : "is-incorrect");
+        message.textContent = correct
+          ? "Correct!"
+          : `Not quite. Correct answer: ${question.answer}.`;
       });
       const result = f.querySelector(".lesson-quiz-result");
-      result.textContent = `Skor ${score}/${feedback.length}. ${feedback.join(" ")}`;
+      result.textContent = `Score ${score}/${fields.length}.`;
       return;
     } else if (k === "test") {
       const kind = f.dataset.kind,
@@ -353,7 +502,7 @@ document.addEventListener("submit", async (e) => {
         detail,
         at: new Date().toISOString(),
       });
-      location.hash = "#/";
+      location.hash = `#/tes/${kind}`;
       await view();
       return;
     } else if (k === "mat") {
@@ -413,7 +562,7 @@ document.addEventListener("click", async (e) => {
   }
   if (a === "read") {
     await Store.markRead(id);
-    location.hash = "#/belajar";
+    await view();
   }
   if (a === "chip") {
     const o = b.closest(".ord");

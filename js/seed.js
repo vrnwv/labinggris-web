@@ -35,132 +35,132 @@ window.SEED = {
     {
       id: "lesson-01",
       order: 1,
-      title: "Simple Present — Penggunaan dan Struktur",
+      title: "Simple Present — Uses and Structure",
       videoTitle: "Learn English Tenses: PRESENT SIMPLE — Learn English with Rebecca",
       youtube: "Z19NAX_gWxI",
-      body: `Video ini menjelaskan present simple untuk keadaan yang relatif tetap, rutinitas, fakta umum, jadwal, dan kebiasaan yang ditandai adverbs of frequency seperti always, often, sometimes, dan never.
+      body: `This video explains how the present simple is used for relatively stable situations, routines, general facts, schedules, and habits. Adverbs of frequency such as always, often, sometimes, and never describe how frequently something happens.
 
-Kalimat positif memakai subject + verb 1. Untuk he, she, dan it, tambahkan -s atau -es: I work, tetapi he works. Kata kerja berakhiran -s, -sh, -ch, atau -x mendapat -es; konsonan + y berubah menjadi -ies. Beberapa bentuk khusus antara lain go menjadi goes dan have menjadi has.
+Affirmative sentences use subject + base verb. Add -s or -es for he, she, and it: I work, but he works. Verbs ending in -s, -sh, -ch, or -x take -es; a consonant + y changes to -ies. Some special forms include go → goes and have → has.
 
-Kalimat negatif memakai do not/don't atau does not/doesn't + verb dasar. Kalimat tanya memakai Do/Does + subject + verb dasar. Setelah does atau doesn't, kata kerja tidak memakai akhiran -s: He doesn't work. Video juga mengingatkan agar memakai kata bantu yang tepat dalam jawaban singkat, misalnya Yes, they do.`,
+Negative sentences use do not/don't or does not/doesn't + base verb. Questions use Do/Does + subject + base verb. After does or doesn't, the main verb does not take -s: He doesn't work. The video also reminds learners to use the correct auxiliary in short answers, such as Yes, they do.`,
       quiz: [
         lessonQuiz("sp1-q1", "My sister _____ at a hospital in Jakarta.", "works", ["work", "working", "worked"]),
-        lessonQuiz("sp1-q2", "Pilih bentuk negatif yang benar.", "He doesn't like spicy food.", ["He don't like spicy food.", "He doesn't likes spicy food.", "He not like spicy food."]),
+        lessonQuiz("sp1-q2", "Choose the correct negative sentence.", "He doesn't like spicy food.", ["He don't like spicy food.", "He doesn't likes spicy food.", "He not like spicy food."]),
         lessonQuiz("sp1-q3", "Rina _____ English every evening.", "studies", ["studys", "studyes", "study"]),
       ],
     },
     {
       id: "lesson-02",
       order: 2,
-      title: "Simple Present — Kebiasaan dan Ejaan",
+      title: "Simple Present — Habits and Spelling",
       videoTitle: "Present Simple Lesson — Learn English by Pocket Passport",
       youtube: "8XgvqzATGNY",
-      body: `Video ini memakai contoh sehari-hari untuk menjelaskan present simple tentang keadaan saat ini, kebiasaan, dan fakta umum. Adverbs of frequency seperti often dan never menerangkan seberapa sering sesuatu terjadi.
+      body: `This video uses everyday examples to explain how the present simple describes current situations, habits, and general facts. Adverbs of frequency such as often and never tell us how frequently something happens.
 
-Untuk he, she, dan it, kata kerja positif mendapat -s: She likes, he eats. Kata kerja berakhiran konsonan + y berubah menjadi -ies, seperti fly menjadi flies. Jika sebelum y ada huruf vokal, cukup tambahkan -s: play menjadi plays.
+In affirmative sentences, verbs take -s with he, she, and it: She likes; he eats. A verb ending in consonant + y changes to -ies, as in fly → flies. If a vowel comes before y, simply add -s: play → plays.
 
-Dalam kalimat tanya dan negatif, gunakan do/does, lalu kata kerja dasar. Contohnya Does she want ice cream? dan She doesn't want chocolate. Video juga memberi contoh profil seseorang menggunakan to be, informasi diri, pekerjaan, dan kebiasaan.`,
+Use do/does followed by the base verb in questions and negative sentences. For example: Does she want ice cream? and She doesn't want chocolate. The video also models a personal profile using to be, personal information, occupations, and habits.`,
       quiz: [
-        lessonQuiz("sp2-q1", "Mengapa play menjadi plays, bukan plaies, untuk subjek he?", "Sebelum y terdapat huruf vokal.", ["Sebelum y terdapat huruf konsonan.", "Play adalah kata kerja tidak beraturan.", "Kalimatnya berbentuk negatif."]),
-        lessonQuiz("sp2-q2", "Ubah menjadi pertanyaan: She wants ice cream.", "Does she want ice cream?", ["Do she wants ice cream?", "Does she wants ice cream?", "Is she want ice cream?"]),
+        lessonQuiz("sp2-q1", "Why does play become plays, not plaies, with the subject he?", "A vowel comes before y.", ["A consonant comes before y.", "Play is an irregular verb.", "The sentence is negative."]),
+        lessonQuiz("sp2-q2", "Change this sentence into a question: She wants ice cream.", "Does she want ice cream?", ["Do she wants ice cream?", "Does she wants ice cream?", "Is she want ice cream?"]),
         lessonQuiz("sp2-q3", "A bird _____ in the sky. (fly)", "flies", ["flys", "flyes", "flying"]),
       ],
     },
     {
       id: "lesson-03",
       order: 3,
-      title: "Present Continuous — Struktur dan Penggunaan",
+      title: "Present Continuous — Structure and Uses",
       videoTitle: "How to Use the Present Continuous — Oxford Online English",
       youtube: "0djfJqWhnpY",
-      body: `Video ini menjelaskan present continuous untuk aksi yang sedang berlangsung, situasi sementara, perubahan yang sedang terjadi, rencana masa depan yang sudah diatur, dan penggunaan lain sesuai konteks.
+      body: `This video explains how the present continuous is used for actions in progress, temporary situations, ongoing changes, arranged future plans, and other context-dependent situations.
 
-Rumusnya subject + am/is/are + verb-ing. I memakai am, he/she/it memakai is, dan you/we/they memakai are. Bentuk negatif menambahkan not setelah be. Untuk pertanyaan, pindahkan am/is/are ke depan subject; jangan memakai do: Are you watching?
+The structure is subject + am/is/are + verb-ing. Use am with I, is with he/she/it, and are with you/we/they. Add not after be to make a negative sentence. To form a question, move am/is/are before the subject; do not use do: Are you watching?
 
-Bentuk -ing biasanya dibuat dengan menambahkan -ing, menghilangkan e terakhir (write menjadi writing), atau menggandakan konsonan pada kata pendek tertentu (run menjadi running).`,
+The -ing form is usually made by adding -ing, dropping a final e (write → writing), or doubling the final consonant in certain short words (run → running).`,
       quiz: [
-        lessonQuiz("pc1-q1", "Apa rumus dasar kalimat positif present continuous?", "Subject + am/is/are + verb-ing", ["Subject + do/does + verb-ing", "Subject + have/has + verb-ing", "Subject + verb-ing"]),
-        lessonQuiz("pc1-q2", "Kalimat manakah yang menunjukkan situasi sementara?", "She is working in the marketing department this month.", ["She works in the finance department.", "She worked in the marketing department.", "She will work in the marketing department."]),
-        lessonQuiz("pc1-q3", "Pilih kalimat untuk rencana yang sudah diatur.", "We're meeting outside the cinema at 8:00 tonight.", ["We meet outside the cinema at 8:00 tonight.", "We met outside the cinema at 8:00 tonight.", "We're meet outside the cinema at 8:00 tonight."]),
+        lessonQuiz("pc1-q1", "What is the basic structure of an affirmative present continuous sentence?", "Subject + am/is/are + verb-ing", ["Subject + do/does + verb-ing", "Subject + have/has + verb-ing", "Subject + verb-ing"]),
+        lessonQuiz("pc1-q2", "Which sentence describes a temporary situation?", "She is working in the marketing department this month.", ["She works in the finance department.", "She worked in the marketing department.", "She will work in the marketing department."]),
+        lessonQuiz("pc1-q3", "Choose the sentence that describes an arranged plan.", "We're meeting outside the cinema at 8:00 tonight.", ["We meet outside the cinema at 8:00 tonight.", "We met outside the cinema at 8:00 tonight.", "We're meet outside the cinema at 8:00 tonight."]),
       ],
     },
     {
       id: "lesson-04",
       order: 4,
-      title: "Present Continuous — Aksi dan Rencana",
+      title: "Present Continuous — Actions and Plans",
       videoTitle: "Present Continuous — An Easy English Grammar Lesson",
       youtube: "QqxdZzOorAU",
-      body: `Video ini merangkum tiga komponen present continuous: subject + be verb (am/is/are) + main verb-ing. Contohnya: I am drinking coffee dan They are having a party.
+      body: `This video reviews the three parts of the present continuous: subject + be verb (am/is/are) + main verb-ing. Examples include: I am drinking coffee and They are having a party.
 
-Tense ini digunakan untuk aksi yang berlangsung sekarang, situasi sementara selama beberapa hari atau bulan, serta rencana masa depan yang sudah diputuskan. Contoh rencana: I am meeting my friend tomorrow. Pilih be verb berdasarkan subject: they memakai are, she memakai is, dan I memakai am.`,
+This tense is used for actions happening now, temporary situations lasting a few days or months, and decided future plans. Example: I am meeting my friend tomorrow. Choose the be verb based on the subject: use are with they, is with she, and am with I.`,
       quiz: [
-        lessonQuiz("pc2-q1", "Apa tiga komponen utama present continuous?", "Subject + be verb + main verb-ing", ["Subject + will + base verb", "Subject + do/does + base verb", "Subject + had + past participle"]),
+        lessonQuiz("pc2-q1", "What are the three main parts of the present continuous?", "Subject + be verb + main verb-ing", ["Subject + will + base verb", "Subject + do/does + base verb", "Subject + had + past participle"]),
         lessonQuiz("pc2-q2", "They _____ soccer in the park.", "are playing", ["is playing", "am playing", "playing"]),
-        lessonQuiz("pc2-q3", "I'm staying at my friend's house this week menunjukkan apa?", "Situasi sementara", ["Fakta ilmiah", "Kebiasaan permanen", "Kejadian masa lampau"]),
+        lessonQuiz("pc2-q3", "What does “I'm staying at my friend's house this week” describe?", "A temporary situation", ["A scientific fact", "A permanent habit", "A past event"]),
       ],
     },
     {
       id: "lesson-05",
       order: 5,
-      title: "Simple Past — Kejadian Selesai",
+      title: "Simple Past — Completed Events",
       videoTitle: "Learn English: Simple Past Tense — Learn on the Go",
       youtube: "WmCE2Ip6XCI",
-      body: `Simple past digunakan untuk tindakan yang sudah selesai di masa lampau. Penanda waktunya dapat berupa yesterday, last week, two years ago, atau in 2001.
+      body: `The simple past is used for actions that were completed in the past. Time expressions can include yesterday, last week, two years ago, or in 2001.
 
-Kalimat positif memakai verb 2. Kata kerja beraturan biasanya mendapat -ed, sedangkan irregular verbs memiliki bentuk khusus seperti go menjadi went dan eat menjadi ate. Bentuk past tetap sama untuk semua subject.
+Affirmative sentences use the past form of the verb. Regular verbs usually take -ed, while irregular verbs have special forms, such as go → went and eat → ate. The past form stays the same for every subject.
 
-Kalimat negatif memakai subject + didn't + verb dasar. Pertanyaan memakai Did + subject + verb dasar. Karena did sudah menunjukkan waktu lampau, jangan memakai verb 2 lagi: I didn't work dan Did you work? Untuk to be, gunakan was atau were.`,
+Negative sentences use subject + didn't + base verb. Questions use Did + subject + base verb. Since did already indicates the past, do not use the past form again: I didn't work and Did you work? Use was or were for to be.`,
       quiz: [
-        lessonQuiz("past1-q1", "Kapan simple past digunakan?", "Untuk tindakan yang sudah selesai di masa lampau.", ["Untuk kejadian yang sedang berlangsung sekarang.", "Untuk rutinitas setiap hari.", "Untuk rencana masa depan yang belum pasti."]),
-        lessonQuiz("past1-q2", "Mengapa I didn't worked yesterday salah?", "Setelah didn't, kata kerja kembali ke bentuk dasar.", ["Subject I harus memakai wasn't.", "Yesterday tidak cocok dengan didn't.", "Work adalah irregular verb."]),
-        lessonQuiz("past1-q3", "Pilih pertanyaan simple past yang benar.", "Did you work late last night?", ["Did you worked late last night?", "Do you worked late last night?", "Were you work late last night?"]),
+        lessonQuiz("past1-q1", "When do we use the simple past?", "For actions completed in the past.", ["For actions happening right now.", "For everyday routines.", "For uncertain future plans."]),
+        lessonQuiz("past1-q2", "Why is “I didn't worked yesterday” incorrect?", "After didn't, the verb returns to its base form.", ["The subject I must use wasn't.", "Yesterday cannot be used with didn't.", "Work is an irregular verb."]),
+        lessonQuiz("past1-q3", "Choose the correct simple past question.", "Did you work late last night?", ["Did you worked late last night?", "Do you worked late last night?", "Were you work late last night?"]),
       ],
     },
     {
       id: "lesson-06",
       order: 6,
-      title: "Simple Past — Regular dan Irregular Verbs",
+      title: "Simple Past — Regular and Irregular Verbs",
       videoTitle: "Past Simple — An Easy English Grammar Lesson",
       youtube: "kgcd4gj9zNw",
-      body: `Video ini menunjukkan simple past melalui cerita aktivitas yang telah terjadi, seperti worked, studied, went, dan ate.
+      body: `This video demonstrates the simple past through stories about completed activities, using verbs such as worked, studied, went, and ate.
 
-Regular verbs biasanya ditambah -ed. Pada pola konsonan-vokal-konsonan tertentu, konsonan terakhir digandakan sebelum -ed: stop menjadi stopped. Irregular verbs harus dipelajari bentuknya, misalnya take menjadi took, go menjadi went, dan see menjadi saw.
+Regular verbs usually take -ed. With certain consonant-vowel-consonant patterns, double the final consonant before adding -ed: stop → stopped. Irregular verbs must be learned individually, for example take → took, go → went, and see → saw.
 
-Untuk kalimat negatif, gunakan didn't + verb dasar. Untuk pertanyaan, gunakan Did + subject + verb dasar. Contoh: She didn't go dan Did she write a letter?`,
+Use didn't + base verb for negative sentences. For questions, use Did + subject + base verb. Examples: She didn't go and Did she write a letter?`,
       quiz: [
-        lessonQuiz("past2-q1", "Mengapa stop menjadi stopped?", "Akhir kata berpola konsonan-vokal-konsonan.", ["Stop adalah irregular verb.", "Subject-nya tunggal.", "Kalimatnya berbentuk negatif."]),
-        lessonQuiz("past2-q2", "Apa bentuk lampau dari take?", "took", ["taked", "taken", "takes"]),
+        lessonQuiz("past2-q1", "Why does stop become stopped?", "It ends with a consonant-vowel-consonant pattern.", ["Stop is an irregular verb.", "The subject is singular.", "The sentence is negative."]),
+        lessonQuiz("past2-q2", "What is the past form of take?", "took", ["taked", "taken", "takes"]),
         lessonQuiz("past2-q3", "She _____ to the party last night.", "didn't go", ["didn't went", "not went", "doesn't go"]),
       ],
     },
     {
       id: "lesson-07",
       order: 7,
-      title: "Simple Future — Penggunaan Will",
+      title: "Simple Future — Using Will",
       videoTitle: "Learn English Tenses: FUTURE SIMPLE with WILL — Learn English with Rebecca",
       youtube: "tri7u632AaA",
-      body: `Video ini membahas will untuk konteks formal, prediksi, keputusan spontan, janji, tawaran bantuan, dan kemungkinan. Dalam percakapan informal, rencana yang sudah dibuat sering memakai going to atau present continuous, sedangkan keputusan yang baru dibuat dapat memakai will.
+      body: `This video discusses how will is used in formal contexts, predictions, spontaneous decisions, promises, offers of help, and possibilities. In informal conversation, plans already made often use going to or the present continuous, while a decision made at the moment of speaking can use will.
 
-Rumusnya subject + will + verb dasar untuk semua subject. Bentuk negatifnya will not/won't + verb dasar. Pertanyaan memakai Will + subject + verb dasar? Jawaban singkatnya, misalnya Yes, he will.
+The structure is subject + will + base verb for every subject. The negative form is will not/won't + base verb. Questions use Will + subject + base verb? A short answer could be Yes, he will.
 
-Pada conditional type 1, gunakan present simple setelah if/when dan will pada klausa utama: If I visit Bali, I will send you a postcard. Shall umum dipakai sebagai pertanyaan sopan dengan I atau we.`,
+In the first conditional, use the present simple after if/when and will in the main clause: If I visit Bali, I will send you a postcard. Shall is commonly used in polite questions with I or we.`,
       quiz: [
-        lessonQuiz("future1-q1", "Kapan will cocok dipakai dalam percakapan informal?", "Saat membuat keputusan spontan ketika berbicara.", ["Untuk rutinitas harian.", "Untuk kejadian kemarin.", "Hanya untuk rencana yang dijadwalkan bulan lalu."]),
-        lessonQuiz("future1-q2", "Pilih conditional type 1 yang benar.", "If I visit Bali, I will send you a postcard.", ["If I will visit Bali, I will send you a postcard.", "If I visited Bali, I will send you a postcard.", "If I visit Bali, I send you a postcard."]),
-        lessonQuiz("future1-q3", "I'll help you carry those bags menyatakan apa?", "Tawaran bantuan", ["Prediksi cuaca", "Jadwal kereta", "Kebiasaan masa lalu"]),
+        lessonQuiz("future1-q1", "When is will suitable in informal conversation?", "When making a spontaneous decision while speaking.", ["For daily routines.", "For events that happened yesterday.", "Only for plans scheduled last month."]),
+        lessonQuiz("future1-q2", "Choose the correct first conditional sentence.", "If I visit Bali, I will send you a postcard.", ["If I will visit Bali, I will send you a postcard.", "If I visited Bali, I will send you a postcard.", "If I visit Bali, I send you a postcard."]),
+        lessonQuiz("future1-q3", "What does “I'll help you carry those bags” express?", "An offer of help", ["A weather forecast", "A train schedule", "A past habit"]),
       ],
     },
     {
       id: "lesson-08",
       order: 8,
-      title: "Simple Future — Bentuk dan Pilihan Ekspresi",
+      title: "Simple Future — Forms and Expressions",
       videoTitle: "Simple Future with Will — Ellii",
       youtube: "n14zCZAvSjI",
-      body: `Video ini membandingkan tiga cara membicarakan masa depan: will + verb dasar untuk keputusan saat itu, be going to + verb dasar untuk rencana, dan be + verb-ing untuk pengaturan yang sudah dijadwalkan.
+      body: `This video compares three ways to talk about the future: will + base verb for decisions made at the moment, be going to + base verb for plans, and be + verb-ing for arrangements that have already been scheduled.
 
-Will adalah modal, jadi kata kerja setelahnya selalu bentuk dasar untuk semua subject: He will walk, bukan He will walks atau He will walking. Singkatan will adalah 'll. Gunakan bentuk seperti they'll untuk subject pronoun, tetapi tulis the students will, bukan the students'll.`,
+Will is a modal, so the verb that follows is always in its base form for every subject: He will walk, not He will walks or He will walking. The contraction of will is 'll. Use forms such as they'll with subject pronouns, but write the students will, not the students'll.`,
       quiz: [
-        lessonQuiz("future2-q1", "Bentuk kata kerja setelah will harus seperti apa?", "Base verb tanpa akhiran -s, -ed, atau -ing.", ["Verb-ing", "Past participle", "Verb + -s untuk he/she/it"]),
-        lessonQuiz("future2-q2", "Manakah penggunaan contraction yang tepat?", "They'll drive to work tomorrow.", ["The students'll go to school on Monday.", "My brother'll walk his dog tomorrow.", "Maria'll give a presentation next week."]),
+        lessonQuiz("future2-q1", "Which form of the verb follows will?", "The base verb, without -s, -ed, or -ing.", ["Verb-ing", "Past participle", "Verb + -s with he/she/it"]),
+        lessonQuiz("future2-q2", "Which contraction is used correctly?", "They'll drive to work tomorrow.", ["The students'll go to school on Monday.", "My brother'll walk his dog tomorrow.", "Maria'll give a presentation next week."]),
         lessonQuiz("future2-q3", "He _____ his dog tomorrow morning.", "will walk", ["will walks", "will walked", "will walking"]),
       ],
     },
@@ -277,47 +277,47 @@ Will adalah modal, jadi kata kerja setelahnya selalu bentuk dasar untuk semua su
     ),
     order(
       "q22",
-      "Susun kata: always / early / my sister / wakes up",
+      "Arrange the words: always / early / my sister / wakes up",
       "My sister always wakes up early.",
     ),
     order(
       "q23",
-      "Susun kata: play / he / does / football / ?",
+      "Arrange the words: play / he / does / football / ?",
       "Does he play football?",
     ),
     order(
       "q24",
-      "Susun kata: is / dinner / mother / cooking / my / now",
+      "Arrange the words: is / dinner / mother / cooking / my / now",
       "My mother is cooking dinner now.",
     ),
     order(
       "q25",
-      "Susun kata: the students / are / studying / not / in the library",
+      "Arrange the words: the students / are / studying / not / in the library",
       "The students are not studying in the library.",
     ),
     order(
       "q26",
-      "Susun kata: visited / last week / we / our grandparents",
+      "Arrange the words: visited / last week / we / our grandparents",
       "We visited our grandparents last week.",
     ),
     order(
       "q27",
-      "Susun kata: did / you / what / yesterday / do / ?",
+      "Arrange the words: did / you / what / yesterday / do / ?",
       "What did you do yesterday?",
     ),
     order(
       "q28",
-      "Susun kata: will / the weather / tomorrow / be / cold",
+      "Arrange the words: will / the weather / tomorrow / be / cold",
       "The weather will be cold tomorrow.",
     ),
     order(
       "q29",
-      "Susun kata: she / not / will / meet / her friend / tomorrow",
+      "Arrange the words: she / not / will / meet / her friend / tomorrow",
       "She will not meet her friend tomorrow.",
     ),
     order(
       "q30",
-      "Susun kata: we / will / a picnic / have / next Sunday",
+      "Arrange the words: we / will / a picnic / have / next Sunday",
       "We will have a picnic next Sunday.",
     ),
   ],
